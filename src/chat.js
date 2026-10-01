@@ -1,8 +1,42 @@
+const conversations = {};
+
+window.springfieldConversations = conversations;
+
 export function setupChat(character) {
-  const conversationHistory = [];
+  if (!conversations[character.id]) {
+    conversations[character.id] = [];
+  }
+
+  const conversationHistory = conversations[character.id];
+
   const form = document.querySelector("#chat-form");
   const input = document.querySelector("#message-input");
   const messages = document.querySelector("#messages");
+
+  conversationHistory.forEach((message) => {
+    const element = document.createElement("p");
+
+    if (message.role === "user") {
+      element.classList.add("user-message");
+    } else {
+      element.classList.add("character-message");
+    }
+
+    element.textContent = message.text;
+
+    messages.appendChild(element);
+  });
+
+  if (conversationHistory.length === 0) {
+    const emptyMessage = document.createElement("p");
+
+    emptyMessage.classList.add("empty-message");
+
+    emptyMessage.textContent =
+      `Comienza una conversación con ${character.name}.`;
+
+    messages.appendChild(emptyMessage);
+  }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -13,24 +47,35 @@ export function setupChat(character) {
       return;
     }
 
-    // Guardamos el mensaje del usuario
+    const emptyMessage =
+      messages.querySelector(".empty-message");
+
+    if (emptyMessage) {
+      emptyMessage.remove();
+    }
+
     conversationHistory.push({
       role: "user",
       text: message
     });
 
-    // Mostramos el mensaje del usuario
-    const userMessage = document.createElement("p");
+    const userMessage =
+      document.createElement("p");
+
     userMessage.classList.add("user-message");
     userMessage.textContent = message;
+
     messages.appendChild(userMessage);
 
     input.value = "";
 
-    // Mostramos "Escribiendo..." mientras esperamos a Gemini
-    const typingMessage = document.createElement("p");
+    const typingMessage =
+      document.createElement("p");
+
     typingMessage.classList.add("character-message");
-    typingMessage.textContent = `${character.name} está escribiendo...`;
+    typingMessage.textContent =
+      `${character.name} está escribiendo...`;
+
     messages.appendChild(typingMessage);
 
     messages.scrollTop = messages.scrollHeight;
@@ -49,21 +94,26 @@ export function setupChat(character) {
       });
 
       if (!response.ok) {
-        throw new Error("Error al obtener la respuesta");
+        throw new Error(
+          "Error al obtener la respuesta"
+        );
       }
 
       const data = await response.json();
 
       typingMessage.remove();
 
-      // Mostramos la respuesta de Gemini
-      const characterMessage = document.createElement("p");
-      characterMessage.classList.add("character-message");
+      const characterMessage =
+        document.createElement("p");
+
+      characterMessage.classList.add(
+        "character-message"
+      );
+
       characterMessage.textContent = data.message;
 
       messages.appendChild(characterMessage);
 
-      // Guardamos la respuesta de Gemini en el historial
       conversationHistory.push({
         role: "character",
         text: data.message
@@ -71,7 +121,11 @@ export function setupChat(character) {
 
       messages.scrollTop = messages.scrollHeight;
 
-      console.log("Historial:", conversationHistory);
+      console.log(
+        "Historial:",
+        conversationHistory
+      );
+
     } catch (error) {
       typingMessage.textContent =
         "Hubo un problema al obtener la respuesta. Intenta nuevamente.";

@@ -1,57 +1,49 @@
 # Springfield AI Chat 🍩
 
-Aplicación web SPA que permite conversar con personajes inspirados en Springfield utilizando Google Gemini AI.
+## 1. Descripción del personaje elegido
 
-## Descripción
+La aplicación permite conversar con personajes de Springfield utilizando Google Gemini AI.
 
-Springfield AI Chat permite elegir entre tres personajes y mantener una conversación con cada uno utilizando inteligencia artificial.
+Los personajes disponibles son:
 
-Cada personaje tiene una personalidad diferente definida mediante un system prompt.
+- **Homero Simpson:** divertido, despistado, impulsivo y amante de la comida.
+- **Lisa Simpson:** inteligente, curiosa, reflexiva y responsable.
+- **Bart Simpson:** travieso, rebelde, bromista y aventurero.
 
-### Personajes
+Cada personaje cuenta con un prompt diferente para adaptar las respuestas de Gemini a su personalidad.
 
-- Homero Simpson: divertido, despistado, impulsivo y amante de la comida.
-- Lisa Simpson: inteligente, curiosa, reflexiva y responsable.
-- Bart Simpson: travieso, rebelde, bromista y despreocupado.
 
-## Tecnologías utilizadas
 
-- HTML5
-- CSS3
-- JavaScript
-- Google Gemini API
-- @google/genai
-- Vercel Serverless Functions
-- Vitest
-- Git / GitHub
-- Vercel
+## 2. Requisitos y ejecución local
 
-## Funcionalidades
+### Requisitos
 
-- SPA con rutas `/home`, `/chat` y `/about`
-- Navegación mediante History API
-- Soporte para botones atrás y adelante del navegador
-- Diseño responsive y mobile-first
-- Selección de diferentes personajes
-- Integración con Google Gemini AI
-- Personalidad diferente para cada personaje
-- Historial de conversación durante la sesión
-- Estado de "escribiendo..." mientras se espera la respuesta
-- Manejo de errores de la API
-- Scroll automático del chat
-- Mensajes visualmente diferentes para usuario y personaje
-- Envío de mensajes con Enter
-- API key protegida mediante variables de entorno
-- Serverless Function como proxy entre frontend y Gemini
-- Tests unitarios con Vitest
+- Node.js
+- npm
+- Vercel CLI
+- API Key de Google Gemini
 
-## Instalación
+### Instalar dependencias
 
-Clonar el repositorio e instalar las dependencias:
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/lupevillena/ProyectoM3_GuadalupeVillena.git
+```
+
+Entrar al proyecto:
+
+```bash
+cd ProyectoM3_GuadalupeVillena/springfield-ai-chat
+```
+
+Instalar las dependencias:
 
 ```bash
 npm install
 ```
+
+### Configurar `.env`
 
 Crear un archivo `.env.local` en la raíz del proyecto:
 
@@ -59,82 +51,120 @@ Crear un archivo `.env.local` en la raíz del proyecto:
 GEMINI_API_KEY=tu_api_key
 ```
 
-La API key no debe subirse al repositorio.
+La API key debe mantenerse privada y `.env.local` no debe subirse a GitHub.
 
-Para ejecutar el proyecto localmente con Vercel:
+### Ejecutar localmente
+
+Ejecutar:
 
 ```bash
 vercel dev
 ```
 
-Después abrir:
+Abrir en el navegador:
 
 ```text
 http://localhost:3000
 ```
 
-## Tests
 
-Para ejecutar los tests:
+
+## 3. Cómo ejecutar los tests
+
+El proyecto utiliza Vitest.
+
+Ejecutar:
 
 ```bash
 npm test
 ```
 
-El proyecto incluye 4 tests unitarios realizados con Vitest.
+El proyecto cuenta con 4 tests unitarios.
 
-## Integración con Gemini
 
-El frontend envía los mensajes a `/api/chat`.
 
-La Serverless Function recibe la conversación y se comunica con Gemini utilizando la variable de entorno `GEMINI_API_KEY`.
+## 4. Cómo desplegar a Vercel
 
-De esta forma, la API key no queda expuesta en el código del frontend.
+El proyecto está configurado para utilizar Vercel.
 
-El historial completo de la conversación se envía en cada solicitud para que el modelo pueda mantener el contexto.
+Para realizar un despliegue desde la terminal:
 
-## Prompts de IA
-
-Cada personaje utiliza instrucciones diferentes para definir su personalidad.
-
-### Homero
-
-Se le indica al modelo responder de manera divertida, simple, despistada e impulsiva, con referencias ocasionales a comida y donas.
-
-### Lisa
-
-Se le indica responder de manera inteligente, curiosa, reflexiva y responsable, explicando las ideas de forma clara y lógica.
-
-### Bart
-
-Se le indica responder con un tono informal, travieso, rebelde y bromista.
-
-Los prompts también indican que las respuestas deben ser cortas y naturales para mantener la experiencia similar a un chat.
-
-## Estructura principal
-
-```text
-springfield-ai-chat/
-├── api/
-│   └── chat.js
-├── src/
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   ├── chat.js
-│   ├── characters.js
-│   └── utils.js
-├── tests/
-│   └── utils.test.js
-├── .env.local
-├── .gitignore
-├── package.json
-├── vercel.json
-└── README.md
+```bash
+vercel --prod
 ```
 
-## Seguridad
+También es necesario configurar la variable de entorno:
 
-La API key de Gemini se almacena en una variable de entorno y solamente se utiliza desde la Serverless Function.
+```text
+GEMINI_API_KEY
+```
 
-El archivo `.env.local` está excluido del repositorio mediante `.gitignore`.
+en el entorno **Production** de Vercel.
+
+
+## 5. Capturas de pantalla
+
+### Página principal
+
+![Página principal](screenshots/home.png)
+
+### Chat funcionando
+
+![Chat funcionando](screenshots/chat.png)
+
+### Respuesta de Gemini
+
+![Respuesta de Gemini](screenshots/response.png)
+
+---
+
+## 6. Link a la aplicación desplegada
+
+Aplicación:
+
+https://springfield-ai-chat.vercel.app
+
+Repositorio:
+
+https://github.com/lupevillena/ProyectoM3_GuadalupeVillena
+
+
+
+## 7. Registro del uso de AI en el proyecto
+
+Durante el desarrollo del proyecto se utilizó inteligencia artificial como herramienta de asistencia.
+
+La inteligencia artificial fue utilizada para:
+
+- Asistir en la planificación y estructura del proyecto.
+- Ayudar en la integración de Google Gemini.
+- Asistir en la implementación de la Serverless Function.
+- Diseñar y revisar los prompts de personalidad de los personajes.
+- Ayudar a identificar y solucionar errores de configuración de Vercel.
+- Revisar el manejo de errores.
+- Ayudar en la creación y revisión de tests unitarios con Vitest.
+- Asistir en la documentación del proyecto.
+
+
+## 8.Seguridad
+
+La API key de Gemini se almacena mediante una variable de entorno.
+
+El archivo:
+
+```text
+.env.local
+```
+
+no se incluye en el repositorio.
+
+El archivo `.gitignore` contiene reglas para evitar que las credenciales y archivos sensibles sean subidos accidentalmente a GitHub.
+
+La comunicación con Gemini se realiza desde el backend mediante una Serverless Function.
+
+
+# 9. Autor
+
+**Guadalupe Villena**
+
+Proyecto desarrollado como parte del Proyecto M3.
