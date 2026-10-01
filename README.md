@@ -106,15 +106,15 @@ en el entorno **Production** de Vercel.
 
 ### Página principal
 
-![Página principal](screenshots/home.png)
+![](capturas_uso/1.jpg)
 
 ### Chat funcionando
 
-![Chat funcionando](screenshots/chat.png)
+![](capturas_uso/2.jpg)
 
-### Respuesta de Gemini
+### About 
 
-![Respuesta de Gemini](screenshots/response.png)
+![](capturas_uso/3.jpg)
 
 ---
 
