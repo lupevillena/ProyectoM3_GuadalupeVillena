@@ -153,31 +153,31 @@ Durante el desarrollo del proyecto se utilizó ChatGPT como herramienta de apoyo
 
 Se solicitó ayuda para incorporar las imágenes de los personajes almacenadas dentro del proyecto y mostrarlas en la página principal, ubicándolas junto a la información correspondiente.
 
-![](capturas_/1.jpg)
+![](capturas/1.jpg)
 
 ### Corrección del diseño de la pestaña Chat
 
 Después de realizar cambios en la interfaz, algunos estilos CSS comenzaron a afectar los elementos de la pestaña Chat, provocando texto superpuesto y una distribución incorrecta. Se revisaron las reglas CSS para corregir esta sección sin modificar el diseño de la página principal.
 
-![](capturas_/2.jpg)
+![](capturas/2.jpg)
 
 ### Ajuste del tamaño de las imágenes
 
 Al modificar el tamaño de las imágenes de los personajes en la pestaña Chat, algunos elementos de la interfaz cambiaron de posición. Se revisaron los estilos específicos de esta sección para ajustar las imágenes sin afectar el resto del diseño.
 
-![](capturas_/3.jpg)
+![](capturas/3.jpg)
 
 ### Actualización del proyecto en GitHub
 
 Se utilizó asistencia para recordar el proceso necesario para guardar y publicar los cambios realizados en el proyecto mediante Git, utilizando comandos como `git status`, `git add`, `git commit` y `git push`.
 
-![](capturas_/4.jpg)
+![](capturas/4.jpg)
 
 ### Manejo de errores de la API de Gemini
 
 Durante las pruebas del Chat se analizaron los códigos de error de la API de Gemini. Se identificó la diferencia entre el error `503 UNAVAILABLE`, relacionado con una indisponibilidad temporal del servicio, y el error `429 RESOURCE_EXHAUSTED`, relacionado con alcanzar una cuota o límite de solicitudes.
 
-![](capturas_/5.jpg)
+![](capturas/5.jpg)
 
 ## 8.Seguridad
 
